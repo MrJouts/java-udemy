@@ -1,11 +1,8 @@
 public class Main {
     public static void main(String[] args) {
 
-        int newScore = calculateScore("Tim", 500);
-        System.out.println("New score is " + newScore);
-
-        calculateScore(75);
-        calculateScore();
+        System.out.println("New score is " + calculateScore("Tim", 500));
+        System.out.println("New score is " + calculateScore(10));
     }
 
     public static int calculateScore(String playerName, int score) {
@@ -14,7 +11,7 @@ public class Main {
     }
 
     public static int calculateScore(int score) {
-        System.out.println("Unnamed player scored " + score + " points");
+        calculateScore("Anonymous", score);
         return score * 1000;
     }
 
