@@ -6,9 +6,11 @@ public class Main {
         }
 
         int j = 1;
+        boolean isReady = true;
         do {
+            if (j > 5 ) break;
             System.out.println(j);
             j++;
-        } while (j <= 5);
+        } while (isReady);
     }
 }
