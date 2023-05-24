@@ -7,7 +7,7 @@ public class Main {
         int counter = 1;
         double sum = 0;
 
-        while (counter <= 5) {
+        do {
             System.out.println("Enter number #" + counter + ":");
             String nextNumber = scanner.nextLine();
             try {
@@ -17,10 +17,7 @@ public class Main {
             } catch (NumberFormatException e) {
                 System.out.println("Invalid number");
             }
-        }
+        } while (counter <= 5);
         System.out.println("The sum of the 5 numbers1: " + sum);
     }
-
-
-
 }
