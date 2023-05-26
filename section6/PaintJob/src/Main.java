@@ -26,12 +26,6 @@ public class Main {
 
     public static int getBucketCount(double area, double areaPerBucket) {
         if (area <= 0 || areaPerBucket <= 0) return -1;
-
-        int bucketsToBuy = 0;
-        while (area > 0) {
-            area -= areaPerBucket;
-            bucketsToBuy++;
-        }
-        return bucketsToBuy;
+        return (int) Math.ceil(area / areaPerBucket);
     }
 }
