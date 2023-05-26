@@ -3,6 +3,10 @@ public class Main {
         System.out.println(getBucketCount(-3.4, 2.1, 1.5, 2));
         System.out.println(getBucketCount(3.4, 2.1, 1.5, 2));
         System.out.println(getBucketCount(2.75, 3.25, 2.5, 1));
+
+        System.out.println(getBucketCount(-3.4, 2.1, 1.5));
+        System.out.println(getBucketCount(3.4, 2.1, 1.5));
+        System.out.println(getBucketCount(7.25, 4.3, 2.35));
     }
 
     public static int getBucketCount(double width, double height, double areaPerBucket, int extraBuckets) {
@@ -11,6 +15,18 @@ public class Main {
         int bucketsToBuy = 0;
         double areaToCover = width * height;
         areaToCover = areaToCover - (areaPerBucket * extraBuckets);
+        while (areaToCover > 0) {
+            areaToCover -= areaPerBucket;
+            bucketsToBuy++;
+        }
+        return bucketsToBuy;
+    }
+
+    public static int getBucketCount(double width, double height, double areaPerBucket) {
+        if (width <= 0 || height <= 0 || areaPerBucket <= 0) return -1;
+
+        int bucketsToBuy = 0;
+        double areaToCover = width * height;
         while (areaToCover > 0) {
             areaToCover -= areaPerBucket;
             bucketsToBuy++;
