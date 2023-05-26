@@ -15,27 +15,13 @@ public class Main {
 
     public static int getBucketCount(double width, double height, double areaPerBucket, int extraBuckets) {
         if (width <= 0 || height <= 0 || areaPerBucket <= 0 || extraBuckets < 0) return -1;
-
-        int bucketsToBuy = 0;
-        double areaToCover = width * height;
-        areaToCover = areaToCover - (areaPerBucket * extraBuckets);
-        while (areaToCover > 0) {
-            areaToCover -= areaPerBucket;
-            bucketsToBuy++;
-        }
-        return bucketsToBuy;
+        double area = width * height - (areaPerBucket * extraBuckets);
+        return getBucketCount(area, areaPerBucket);
     }
 
     public static int getBucketCount(double width, double height, double areaPerBucket) {
         if (width <= 0 || height <= 0 || areaPerBucket <= 0) return -1;
-
-        int bucketsToBuy = 0;
-        double areaToCover = width * height;
-        while (areaToCover > 0) {
-            areaToCover -= areaPerBucket;
-            bucketsToBuy++;
-        }
-        return bucketsToBuy;
+        return getBucketCount(width * height, areaPerBucket);
     }
 
     public static int getBucketCount(double area, double areaPerBucket) {
