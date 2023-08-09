@@ -10,7 +10,7 @@ public class Bank {
         this.name = name;
     }
 
-    public Customer getCustomer(String customerName) {
+    private Customer getCustomer(String customerName) {
         for (var customer : customers) {
             if (customer.name().equalsIgnoreCase(customerName)) {
                 return customer;
@@ -26,5 +26,34 @@ public class Bank {
             customers.add(customer);
             System.out.println("New Customer added: " + customer);
         }
+    }
+
+    public void addTransaction(String name, double transactionAmount) {
+        Customer customer = getCustomer(name);
+        if (customer != null) {
+            customer.transactions().add(transactionAmount);
+        }
+    }
+
+    public void printStatement(String customerName) {
+        Customer customer = getCustomer(customerName);
+        if (customer == null) {
+            return;
+        }
+
+        System.out.println("_".repeat(30));
+        System.out.println("Customer Name: " + customer.name());
+        System.out.println("Transactions:");
+        for (double d : customer.transactions()) {
+            System.out.printf("$%10.2f (%s)%n", d, d < 0 ? "debit" : "credit");
+        }
+    }
+
+    @Override
+    public String toString() {
+        return "Bank{" +
+                "name='" + name + '\'' +
+                ", customers=" + customers +
+                '}';
     }
 }
